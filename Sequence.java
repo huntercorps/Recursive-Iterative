@@ -38,19 +38,6 @@ public abstract class Sequence {
             return n2;
     }
 
-
-    /* Accept a value of n and return the corresponding element in the sequence using recursion.
-    A helper wasn't needed for this bc how I programed it, so I omitted it */
-    public static int computeRecursive(int n){
-        if (n == 0 || n == 1){
-            efficiency++;
-            return n;
-        }
-        efficiency++;
-        return computeRecursive(n-2) + computeRecursive(n-1) * 2;
-    }
-
-
     /* unused method using stream*/
     @Deprecated
     public static void streamSequence(int nth) {
@@ -59,6 +46,24 @@ public abstract class Sequence {
                 .skip(nth - 1) //skip over non nth numbers
                 .map(t -> t[0]) //grab the 1st number of the pairs
                 .forEach(System.out::println);
+    }
+
+    /* helper method, Accepts a value of n and returns 0, 1,  or passes values to the recursive method recursion.*/
+    public static int computeRecursive(int n){
+        if (n ==0 || n ==1) {
+            efficiency++;
+            return n;
+        }
+        return computeRecursive(n-1,0,1);
+    }
+
+    /* Accepts the value of n and returns the value of the nth term values and increments efficiency token.*/
+    private static int computeRecursive(int n, int prev, int current){
+       // System.out.println(current);
+        System.out.println(n);
+        efficiency++;
+            return (n == 0) ? current : computeRecursive(--n, current, prev+(current*2));
+
     }
 
 }
