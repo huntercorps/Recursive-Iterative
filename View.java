@@ -35,7 +35,7 @@ public class View {
     /* Constructor */
     private View(){
 
-        //Panel Setup
+        //Panel Setup, would have used GridBag but this was shorter/more condensed
         panel.setLayout(new GridLayout(0,2,5,5));
         panel.add(blank1);
         panel.add(itButton);
@@ -119,8 +119,8 @@ public class View {
     }
 
 
-    /*When the window is closed, computes efficiency values of n from 0 to 10. The results are written to a myfile.txt.
-     * Each line of myfile contains the value of n, the efficiency of the iterative method and the efficiency
+    /*When the window is closed, computes efficiency values of terms 0 to 10. The results are written to a myfile.txt.
+     * Each line of myfile contains the value of the term, the efficiency of the iterative method and the efficiency
      * of the recursive method separated by commas so as to allow opening with excel. */
     public class CloseApp extends WindowAdapter{
 

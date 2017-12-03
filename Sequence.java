@@ -23,7 +23,7 @@ public abstract class Sequence {
     }
 
 
-    /* Accepts a value of n and returns the corresponding element in the sequence using iteration. */
+    /* Accepts a value of count(term) and returns the corresponding term value in the sequence using iteration. */
     public static long computeIterative(long count){
         //efficiency = 0 //moved to getEfficiency
         if (count == 0 || count == 1){
@@ -40,7 +40,7 @@ public abstract class Sequence {
             return countVal2;
     }
 
-    /* unused method using stream*/
+    /* unused method using stream just testing*/
     @Deprecated
     public static void streamSequence(int nth) {
         Stream.iterate(new int[]{0, 1}, t -> new int[]{t[1], t[0] + t[1] + t[1]})
@@ -50,7 +50,7 @@ public abstract class Sequence {
                 .forEach(System.out::println);
     }
 
-    /* helper method, Accepts a value of n and returns 0, 1, or passes values to the recursive method.*/
+    /* helper method, Accepts a count(term) and returns 0, 1, or passes count to the recursive method.*/
     public static long computeRecursive(long count){
         //efficiency = 0 //moved to getEfficiency
         if (count ==0 || count ==1) {
@@ -60,7 +60,7 @@ public abstract class Sequence {
         return computeRecursive(count-1,0,1);
     }
 
-    /* Accepts the value of n and returns the value of the nth term and increments efficiency token.*/
+    /* Accepts the count(term) and returns the value of the count term and increments efficiency token.*/
     private static long computeRecursive(long count, long prev, long current){
         efficiency++;
         return (count == 0) ? current : computeRecursive(--count, current, prev+(current*2));
