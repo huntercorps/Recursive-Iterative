@@ -14,7 +14,8 @@ public abstract class Sequence {
     private static int efficiency;
 
 
-    /*Return the efficiency counter of the calls to the computeIterative and Recursive methods and resets counter.*/
+    /*Returns the efficiency counter of the calls to the computeIterative and Recursive methods and resets counter.
+    * I chose to reset efficiency this way rather than including it in the other methods*/
     public static int getEfficiency(){
         int efficiencyCounter = efficiency;
         efficiency = 0;
@@ -22,20 +23,21 @@ public abstract class Sequence {
     }
 
 
-    /* Accepts a value of n and return the corresponding element in the sequence using iteration. */
-    public static long computeIterative(long n){
-        if (n == 0 || n == 1){
+    /* Accepts a value of n and returns the corresponding element in the sequence using iteration. */
+    public static long computeIterative(long count){
+        //efficiency = 0 //moved to getEfficiency
+        if (count == 0 || count == 1){
             efficiency++;
-            return n;
+            return count;
         }
-            long n1 = 0, n2 = 1, nTemp;
-            for (int i = 1; i < n; i++) {
-                nTemp= n1 + n2 * 2;
-                n1=n2;
-                n2=nTemp;
+            long countVal1 = 0, countVal2 = 1, countTemp;
+            for (int i = 1; i < count; i++) {
+                countTemp= countVal1 + countVal2 * 2;
+                countVal1=countVal2;
+                countVal2=countTemp;
                 efficiency++;
             }
-            return n2;
+            return countVal2;
     }
 
     /* unused method using stream*/
@@ -48,21 +50,20 @@ public abstract class Sequence {
                 .forEach(System.out::println);
     }
 
-    /* helper method, Accepts a value of n and returns 0, 1,  or passes values to the recursive method recursion.*/
-    public static long computeRecursive(long n){
-        if (n ==0 || n ==1) {
+    /* helper method, Accepts a value of n and returns 0, 1, or passes values to the recursive method.*/
+    public static long computeRecursive(long count){
+        //efficiency = 0 //moved to getEfficiency
+        if (count ==0 || count ==1) {
             efficiency++;
-            return n;
+            return count;
         }
-        return computeRecursive(n-1,0,1);
+        return computeRecursive(count-1,0,1);
     }
 
-    /* Accepts the value of n and returns the value of the nth term values and increments efficiency token.*/
-    private static long computeRecursive(long n, long prev, long current){
-       // System.out.println(current);
-        System.out.println(n);
+    /* Accepts the value of n and returns the value of the nth term and increments efficiency token.*/
+    private static long computeRecursive(long count, long prev, long current){
         efficiency++;
-            return (n == 0) ? current : computeRecursive(--n, current, prev+(current*2));
+        return (count == 0) ? current : computeRecursive(--count, current, prev+(current*2));
 
     }
 
