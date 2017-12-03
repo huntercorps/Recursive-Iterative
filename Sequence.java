@@ -23,12 +23,12 @@ public abstract class Sequence {
 
 
     /* Accepts a value of n and return the corresponding element in the sequence using iteration. */
-    public static int computeIterative(int n){
+    public static long computeIterative(long n){
         if (n == 0 || n == 1){
             efficiency++;
             return n;
         }
-            int n1 = 0, n2 = 1, nTemp;
+            long n1 = 0, n2 = 1, nTemp;
             for (int i = 1; i < n; i++) {
                 nTemp= n1 + n2 * 2;
                 n1=n2;
@@ -49,7 +49,7 @@ public abstract class Sequence {
     }
 
     /* helper method, Accepts a value of n and returns 0, 1,  or passes values to the recursive method recursion.*/
-    public static int computeRecursive(int n){
+    public static long computeRecursive(long n){
         if (n ==0 || n ==1) {
             efficiency++;
             return n;
@@ -58,7 +58,7 @@ public abstract class Sequence {
     }
 
     /* Accepts the value of n and returns the value of the nth term values and increments efficiency token.*/
-    private static int computeRecursive(int n, int prev, int current){
+    private static long computeRecursive(long n, long prev, long current){
        // System.out.println(current);
         System.out.println(n);
         efficiency++;

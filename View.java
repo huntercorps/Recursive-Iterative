@@ -98,9 +98,9 @@ public class View {
 
     /* Retrieves and parses user input(inputText field) and provides exception checking.
      * If an exception is found or value less than 0 returns sentinel value -1 */
-    private int getInput(){
+    private long getInput(){
         try {
-            int input = Integer.parseInt(inputText.getText());
+            long input = Long.parseLong(inputText.getText());
             if (input < 0){
                 throw new NumberFormatException();
             } else {
